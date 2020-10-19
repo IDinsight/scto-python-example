@@ -12,11 +12,11 @@ def pull_data(url, username, password, keyfile=None):
 
         if keyfile == None:
             response = requests.get(
-                url, auth=requests.auth.HTTPDigestAuth(username, password))
+                url, auth=requests.auth.HTTPBasicAuth(username, password))
         else:
             files = {'private_key': open(keyfile, 'rb')}
             response = requests.post(
-                url, files=files, auth=requests.auth.HTTPDigestAuth(username, password))
+                url, files=files, auth=requests.auth.HTTPBasicAuth(username, password))
 
     except Exception as e:
 
